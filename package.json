@@ -18,7 +18,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "start": "pnpm run build && node dist/index.js",
+    "start": "yarn build && node dist/index.js",
     "test": "jest --passWithNoTests"
   },
   "dependencies": {

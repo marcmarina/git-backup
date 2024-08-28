@@ -4,6 +4,8 @@ async function main() {
   const status = await git().status(['-s']);
 
   const hasChanges = status.not_added.length > 0;
+
+  console.log({ hasChanges });
 }
 
 main();
