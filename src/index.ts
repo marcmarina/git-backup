@@ -1,11 +1,24 @@
 import git from 'simple-git';
+import dayjs from 'dayjs';
 
 async function main() {
   const status = await git().status(['-s']);
 
-  const hasChanges = status.not_added.length > 0;
+  const isClean = status.isClean();
 
-  console.log({ hasChanges });
+  const formattedDate = dayjs().format('YYYY-MM-DD HH:mm:ss');
+
+  if (isClean) {
+    console.log(formattedDate, 'No backup needed');
+  } else {
+    git().add('.');
+
+    git().commit(`Backup ${formattedDate}`);
+
+    git().pull('--rebase');
+
+    console.log('Backup complete', formattedDate);
+  }
 }
 
 main();
