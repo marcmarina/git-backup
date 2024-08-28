@@ -1,0 +1,12 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:base"],
+  "labels": ["dependencies", "renovate"],
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["pin", "patch"],
+      "automerge": true
+    }
+  ],
+  "ignoreDeps": ["chalk", "commander"]
+}
